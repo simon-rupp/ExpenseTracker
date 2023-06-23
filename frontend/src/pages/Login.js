@@ -7,7 +7,7 @@ import { useLogin } from "../hooks/useLogin";
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const { error, loading, login } = useLogin();
+    const { error, login } = useLogin();
     
     
     

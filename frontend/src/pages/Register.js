@@ -2,14 +2,13 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { useRegister } from "../hooks/useRegister";
 
 const Register = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("")
-    const { error, loading, register } = useRegister();     
+    const { error, register } = useRegister();     
     
     // Register function
     const onSubmit = async (e) => {

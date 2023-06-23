@@ -8,7 +8,7 @@ const TransactionFrom = () => {
     const [type, setType] = useState('expense')
     const [amount, setAmount] = useState('')
     const [error, setError] = useState(null)
-    const [emptyFeilds, setEmptyFeilds] = useState(null)
+    //const [emptyFeilds, setEmptyFeilds] = useState(null)
 
 
     const {user} = useAuthContext()
@@ -34,14 +34,14 @@ const TransactionFrom = () => {
 
         if (!res.ok) {
             setError(json.error)
-            setEmptyFeilds(json.emptyFeilds)
+            //setEmptyFeilds(json.emptyFeilds)
         } 
         else {
             setError(null)
             setName('')
             setType('expense')
             setAmount('')
-            setEmptyFeilds(null)
+            //setEmptyFeilds(null)
             console.log("new transaction added", json)
             dispatch({type: "CREATE_TRANSACTION", payload: json})
         }

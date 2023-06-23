@@ -5,7 +5,7 @@ import { useTransactionsContext } from "../hooks/useTransactionsContext"
 
 const CashFlow = () => {
 
-    const {transactions, dispatch} = useTransactionsContext()
+    const {transactions} = useTransactionsContext()
 
     const cashFlowCalculator = (transactions) => {
         let cashFlow = 0;

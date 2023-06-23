@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className="container">
         <div>
             <Link to="/">
-            <h1>Expense Tracker</h1>
+            <h1>Wallet Watch</h1>
             </Link>
         </div>
         <div className="links">

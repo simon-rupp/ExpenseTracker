@@ -7,7 +7,6 @@ const {
     updateTransaction
 } = require('../controllers/transactionController')
 const router = express.Router()
-const verifyToken = require('../routes/user')
 const requireAuth = require('../middleware/requireAuth')
 
 router.use(requireAuth)
@@ -19,7 +18,7 @@ router.get('/', getAllTransactions)
 router.get('/:id', getTransaction)
 
 // POST a transaction
-router.post('/', verifyToken, createTransaction)
+router.post('/', createTransaction)
 
 // DELETE a transaction
 router.delete('/:id', deleteTransaction)

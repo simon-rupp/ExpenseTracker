@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:4000",
+  "proxy": "https://wallet-watch-4704a6684e3d.herokuapp.com/",
   "name": "frontend",
   "version": "0.1.0",
   "private": true,

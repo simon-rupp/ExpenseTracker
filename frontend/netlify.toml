@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/*"
-  to = "https://wallet-watch-4704a6684e3d.herokuapp.com/"
+  to = "https://wallet-watch-4704a6684e3d.herokuapp.com/:splat"
   status = 200

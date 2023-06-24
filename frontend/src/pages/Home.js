@@ -15,7 +15,7 @@ const Home = () => {
 
     useEffect(() => {
         const fetchTransactions = async () => {
-            const res = await fetch("https://wallet-watch-4704a6684e3d.herokuapp.com/transactions", {
+            const res = await fetch("/transactions", {
                 headers: {'Authorization': `Bearer ${user.token}`}
               })
             const data = await res.json()

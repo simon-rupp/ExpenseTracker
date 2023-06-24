@@ -12,7 +12,7 @@ export const useLogin = () => {
         setLoading(true);
         setError(null);
 
-        const response = await fetch("https://wallet-watch-4704a6684e3d.herokuapp.com/user/login", {
+        const response = await fetch("/user/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password }),

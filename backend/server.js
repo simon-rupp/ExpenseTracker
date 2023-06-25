@@ -19,10 +19,10 @@ app.use((req, res, next) => {
 })
 
 // user routes
-app.use("/user", userRoutes)
+app.use("/api/user", userRoutes)
 
 // routes
-app.use("/transactions", transactionRoutes)
+app.use("/api/transactions", transactionRoutes)
 
 // connect to database
 mongoose.connect(process.env.MONGO_URI)

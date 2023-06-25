@@ -15,7 +15,7 @@ const Home = () => {
 
     useEffect(() => {
         const fetchTransactions = async () => {
-            const res = await fetch("/transactions", {
+            const res = await fetch("/api/transactions", {
                 headers: {'Authorization': `Bearer ${user.token}`}
               })
             const data = await res.json()

@@ -21,7 +21,7 @@ const TransactionFrom = () => {
             return
         }
         const transaction = { name, type, amount, userID: window.localStorage.getItem("userID") }
-        const res = await fetch('/transactions', {
+        const res = await fetch('/api/transactions', {
             method: 'POST',
             body: JSON.stringify(transaction),
             headers: { 

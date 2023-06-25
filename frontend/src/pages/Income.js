@@ -12,7 +12,7 @@ const Income = () => {
 
     useEffect(() => {
         const fetchTransactions = async () => {
-            const res = await fetch("/transactions")
+            const res = await fetch("/api/transactions")
             const data = await res.json()
             if (res.ok) {
                 dispatch({type: "SET_TRANSACTIONS", payload: data})

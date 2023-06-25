@@ -34,7 +34,7 @@ const Home = () => {
     return (
         <div className="home">
                 <div className="transactions">
-                    <h2>Your Transactions:</h2>
+                    <h2>All Transactions:</h2>
                     {transactions && transactions.map(transaction => (
                         <TransactionDetails key={transaction._id} transaction={transaction} />
                     ))}

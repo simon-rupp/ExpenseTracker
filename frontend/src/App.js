@@ -8,6 +8,8 @@ import Income from './pages/Income';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import LinkAccounts from './pages/LinkAccounts';
+import Info from './pages/Info';
 
 function App() {
 
@@ -22,6 +24,14 @@ function App() {
             <Route 
               exact path="/"
               element={user ? <Home /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/info"
+              element={user ? <Info /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/linkaccount"
+              element={user ? <LinkAccounts /> : <Navigate to="/login" />}
             />
             <Route
               path="/spending"

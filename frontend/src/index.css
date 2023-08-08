@@ -1,10 +1,10 @@
    /* font */
-   @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Ubuntu&display=swap');
 
 
    body {
      margin: 0;
-     font-family: 'Ubuntu', sans-serif;
+     font-family: 'Montserrat', sans-serif;
      background-color: var(--background);
      color: #fff;
    }
@@ -13,7 +13,8 @@
    :root {
      --primary: #1bad7a;
      --error: #cb0808;
-     --background: rgb(109, 125, 142);
+     --background: rgb(144, 158, 173);
+     --transaction: rgb(63, 72, 81);
    }
    
    header {
@@ -58,12 +59,12 @@
      gap: 20px;
    }
    
-   h2 {
+   h1, h2 {
      text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
    }
    
    .transaction-details {
-     background-color: rgb(63, 72, 81);
+     background-color: var(--transaction);
      border-radius: 4px;
      margin: 12px auto;
      padding: 7px 10px 15px 10px;
@@ -103,9 +104,8 @@
      align-items: center;
      text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
      box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
-     height: 220px;
      width: 100%;
-   
+     grid-template-rows: max-content max-content;
    }
    
    .create h2 {
@@ -125,13 +125,18 @@
    .create input:hover, .create select:hover {
      border-color: var(--primary);
    }
+
+   .create input:focus, .create select:focus {
+     border-color: #000;
+     outline: none;
+   }
    
    .create label {
      margin: 5px;
      grid-column: 1;
    }
    
-   .create button {
+   .create button, .linkaccountbutton, .syncButton {
      margin: 10px;
      display: block;
      font: inherit;
@@ -143,10 +148,14 @@
    
    }
    
-   .create button:hover {
+   .create button:hover, .linkaccountbutton:hover, .syncButton:hover {
      background-color: #fff;
      color: var(--primary);
      transform: translateY(-2px);
+   }
+
+   .syncButton {
+    margin: 0px;
    }
    
    p.error {
@@ -270,7 +279,7 @@
      padding: 0;
    }
    
-   .incomeButton, .spendingButton {
+   .incomeButton, .spendingButton, .linkAccountButton, .infoButton {
      margin-right: 50px;
    }
    
@@ -306,6 +315,11 @@
    .loginForm input:hover, .registerForm input:hover {
      border-color: var(--primary);
    }
+
+    .loginForm input:focus, .registerForm input:focus {
+      border-color: #000;
+      outline: none;
+    }
    
    .loginForm label, .registerForm label {
      margin: 5px;
@@ -329,4 +343,72 @@
      color: var(--primary);
      transform: translateY(-2px);
    }
+
+   .aboveTransactions {
+     display: flex;
+     justify-content: space-between;
+     align-items: baseline;
+   }
+
+   .filterText {
+    margin: 0px;
+    margin-right: 10px;
+    display: inline-block;
+   }
+
+   .syncButton {
+    margin-right: 10px;
+    display: inline;
+   }
+
+   .allTransactionsText {
+     margin: 0px;
+     margin-top: 10px;
+   }
+
+   .sortButton {
+    border-radius: 4px;
+    background-color: var(--primary);
+    border-color: #fff;
+    color: #fff;
+    border-width: 2px;
+   }
+
+   .sortButton:hover {
+    border-color: var(--transaction);
+   }
+
+   .linkaccountbuttondiv {
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+   }
+
+   .linkaccountbutton {
+    font-size: 1.5em;
+   }
+
+   .info h1, h2{
+    text-shadow: none;
+   }
    
+   .note {
+      margin: 0px;
+      margin-top: 10px;
+      font-size: 1.5em;
+   }
+
+   .underline {
+      text-decoration: underline;
+   }
+   
+   .pageNumber {
+      display: inline-block;
+   }
+
+   .syncButton:disabled {
+      background-color: #ccc;
+      color: #888; 
+      cursor: not-allowed;
+      opacity: 0.7;
+   }

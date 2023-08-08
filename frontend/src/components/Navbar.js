@@ -11,24 +11,31 @@ const Navbar = () => {
         logout();
     }
 
-
-
-
     return (
     <header>
         <div className="container">
         <div>
             <Link to="/">
-            <h1>Wallet Watch</h1>
+                <h1>Wallet Watch</h1>
             </Link>
         </div>
         <div className="links">
+            <Link to="/info">
+                <p className="infoButton">About</p>
+            </Link>
+            <Link to="/linkaccount">
+                <p className="linkAccountButton">Connect Bank</p>
+            </Link>
+            
+            {/*
             <Link to="/income">
             <p className="incomeButton">Income</p>
             </Link>
             <Link to="/spending">
             <p className="spendingButton">Spending</p>
             </Link>
+            */}
+
             {!user && (
             <Link to="/login">
                 <p className="loginButton">Login</p>

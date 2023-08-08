@@ -7,6 +7,7 @@ const TransactionFrom = () => {
     const [name, setName] = useState('')
     const [type, setType] = useState('expense')
     const [amount, setAmount] = useState('')
+    const [category, setCategory] = useState('Rent')
     const [error, setError] = useState(null)
     //const [emptyFeilds, setEmptyFeilds] = useState(null)
 
@@ -20,7 +21,7 @@ const TransactionFrom = () => {
             setError("Please login to add a transaction")
             return
         }
-        const transaction = { name, type, amount, userID: window.localStorage.getItem("userID") }
+        const transaction = { name, type, amount, category }
         const res = await fetch('/api/transactions', {
             method: 'POST',
             body: JSON.stringify(transaction),
@@ -41,6 +42,7 @@ const TransactionFrom = () => {
             setName('')
             setType('expense')
             setAmount('')
+            setCategory('Rent')
             //setEmptyFeilds(null)
             console.log("new transaction added", json)
             dispatch({type: "CREATE_TRANSACTION", payload: json})
@@ -64,6 +66,27 @@ const TransactionFrom = () => {
             >
                 <option value="expense">Expense</option>
                 <option value="income">Income</option>
+            </select>
+            <label>Category:</label>
+            <select onChange={(e) => setCategory(e.target.value)} value={category}>
+
+                <option value="Rent">Rent</option>
+                <option value="Taxes">Taxes</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Mortgage">Mortgage</option>
+                <option value="Health">Health</option>
+                <option value="Savings">Savings</option>
+                <option value="Bills">Bills</option>
+                <option value="Travel">Travel</option>
+                <option value="Fees">Fees</option>
+                <option value="Food and Drink">Food and Drink</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Personal Care">Personal Care</option>
+                <option value="Transfer">Transfer</option>
+                <option value="Income">Income</option>
+                <option value="Uncategorized">Uncategorized</option>
+
             </select>
             
             <label> Amount:</label>

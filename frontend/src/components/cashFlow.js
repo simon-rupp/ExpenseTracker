@@ -28,6 +28,15 @@ const CashFlow = () => {
         return cashFlow
     }
 
+    const formatCashFlow = (cashFlow) => {
+        return cashFlow.toLocaleString(undefined, {
+          style: "currency",
+          currency: "USD",
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        });
+      };
+
     const handleNegative = (cashFlow) => {
         if (cashFlow < 0) {
             return cashFlow * -1
@@ -50,7 +59,7 @@ const CashFlow = () => {
     return (
         <div className="cashFlow">
             <h2>Cash Flow</h2>
-            <h3>{negativeSign(cashFlowCalculator(transactions))}${handleNegative(cashFlowCalculator(transactions))}</h3>
+            <h3>{negativeSign(cashFlowCalculator(transactions))}{formatCashFlow(handleNegative(cashFlowCalculator(transactions)))}</h3>
         </div>
     )
 }

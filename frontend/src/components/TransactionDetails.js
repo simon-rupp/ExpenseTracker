@@ -2,7 +2,7 @@ import { useTransactionsContext } from "../hooks/useTransactionsContext"
 import { useAuthContext } from '../hooks/useAuthContext'
 
 const TransactionDetails = ({ transaction }) => {
-    const formattedDate = new Date(transaction.createdAt).toLocaleDateString();
+    const formattedDate = new Date(transaction.date || transaction.createdAt).toLocaleDateString();
     const {dispatch} = useTransactionsContext()
     const {user} = useAuthContext()
     
@@ -18,8 +18,7 @@ const TransactionDetails = ({ transaction }) => {
         if (!user){
             return
         }
-        
-        const res = await fetch(`/transactions/${transaction._id}`, {
+        const res = await fetch(`api/transactions/${transaction._id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${user.token}`
@@ -31,6 +30,10 @@ const TransactionDetails = ({ transaction }) => {
         }
         
     }  
+
+    const handleAmount = (amount) => {
+        return parseFloat(amount).toFixed(2)
+    }
     
     return (
         <div className="transaction-details">
@@ -38,11 +41,14 @@ const TransactionDetails = ({ transaction }) => {
             <p className="Amount">
                 Amount: <span style={{ color: colorChanger() ? "#cb0808" : "#1bad7a" }}>$</span>
                 <span style={{ color: colorChanger() ? "#cb0808" : "#1bad7a" }}>
-                    {transaction.amount}
+                    {handleAmount(transaction.amount)}
                 </span>
             </p>
+            <br/>
+            <span className="category">{transaction.category[0]}</span>
             <p className="date">{formattedDate}</p>
-            <span className="deleteButton" onClick={handleClick}>delete</span>
+            
+            <span className="deleteButton" onClick={handleClick}>Delete</span>
         </div>
     )
 }

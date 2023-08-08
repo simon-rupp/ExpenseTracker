@@ -3,16 +3,21 @@ import { useEffect} from "react"
 import TransactionDetails from "../components/TransactionDetails"
 import { useTransactionsContext } from "../hooks/useTransactionsContext"
 import IncomeDisplay from "../components/IncomeDisplay"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 
 const Income = () => {
 
     const { transactions, dispatch } = useTransactionsContext()
+    const { user } = useAuthContext()
+
 
 
     useEffect(() => {
         const fetchTransactions = async () => {
-            const res = await fetch("/api/transactions")
+            const res = await fetch("/api/transactions", {
+                headers: {'Authorization': `Bearer ${user.token}`}
+              })
             const data = await res.json()
             if (res.ok) {
                 dispatch({type: "SET_TRANSACTIONS", payload: data})

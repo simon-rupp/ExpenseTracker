@@ -20,8 +20,19 @@ const transactionSchema = new Schema({
     userID: {
         type: String,
         required: true
-    }
-    
+    },
+    plaidTransactionID: { // called transaction_id in plaid
+        type: String,
+        required: false
+    },
+    date: {
+        type: String,
+        required: false
+    },
+    category: {
+        type: [String],
+        required: false
+    }  
 }, {timestamps: true})
 
 const Transaction = mongoose.model('Transaction', transactionSchema)

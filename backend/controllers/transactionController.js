@@ -1,19 +1,45 @@
 const Transaction = require('../models/transaction')
-const User = require('../models/user')
 const mongoose = require('mongoose')
 
 // GET all transactions
 const getAllTransactions = async (req, res) => {
 
     //const transactions = await Transaction.find({userID: req.params.userId}).sort({createdAt: -1})
-
     const userID = req.user._id
+    
+    const filter = req.query.sortBy
 
-    const transactions = await Transaction.find({userID}).sort({createdAt: -1})
+    const transactions = await Transaction.find({userID}).sort(sort(filter))
 
     res.status(200).json(transactions)
 
 }
+
+const sort = (condition) => {
+    if (condition === "newest") {
+        return {date: -1}
+    }
+    else if (condition === "oldest") {
+        return {date: 1}
+    }
+    else if (condition === "highest") {
+        return {amount: -1}
+    }
+    else if (condition === "lowest") {
+        return {amount: 1}
+    }
+    else if (condition === "income") {
+        return {type: -1}
+    }
+    else if (condition === "expense") {
+        return {type: 1}
+    }
+    else {
+        return {date: -1}
+    }
+}
+
+
 
 // GET a transaction
 const getTransaction = async (req, res) => {
@@ -31,20 +57,17 @@ const getTransaction = async (req, res) => {
 
 // POST a transaction
 const createTransaction = async (req, res) => {
-    const {name, type, amount, userID} = req.body
+    const {name, type, amount, category} = req.body
 
     let emptyFeilds = []
 
     if (!name) {
         emptyFeilds.push("name")
     }
-    if (!type) {
-        emptyFeilds.push("type")
-    }
     if (!amount) {
         emptyFeilds.push("amount")
     }
-
+    
     if (emptyFeilds.length > 0) {
         return res.status(400).json({error: `Please enter a the following field(s): ${emptyFeilds.join(", ")}`, emptyFeilds})
 
@@ -57,7 +80,7 @@ const createTransaction = async (req, res) => {
     try {
         const newAmount = truncate(amount)
         const userID = req.user._id
-        const transaction = await Transaction.create({name, type, amount: newAmount, userID})
+        const transaction = await Transaction.create({name, type, amount: newAmount, userID, date: new Date(), category})
         
         res.status(201).json(transaction)
     } catch (err) {

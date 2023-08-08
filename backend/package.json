@@ -19,7 +19,9 @@
     "heroku": "^8.1.9",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.2.4",
-    "react-cookie": "^4.1.1"
+    "plaid": "^15.2.0",
+    "react-cookie": "^4.1.1",
+    "react-plaid-link": "^3.4.0"
   },
   "engines": {
     "node": "18.15.0"

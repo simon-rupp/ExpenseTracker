@@ -15,7 +15,19 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true,
-    } 
+    },
+    access_token: {
+        type: String,
+        required: false,
+    },
+    item_id: {
+        type: [String],
+        required: false,
+    },
+    plaidCursor: {
+        type: String,
+        required: false,
+    },
 })
 
 userSchema.statics.register = async function (username, password) {

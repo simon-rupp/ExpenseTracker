@@ -25,7 +25,7 @@ const Income = () => {
         }
 
         fetchTransactions()
-    }, [dispatch])
+    }, [dispatch, user])
 
     const Expenses = transactions ? transactions.filter(transaction => transaction.type === "income") : []
 

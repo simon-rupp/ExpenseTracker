@@ -149,8 +149,7 @@
    }
    
    .create button:hover, .linkaccountbutton:hover, .syncButton:hover {
-     background-color: #fff;
-     color: var(--primary);
+     
      transform: translateY(-2px);
    }
 
@@ -339,8 +338,6 @@
    }
    
    .loginForm button:hover, .registerForm button:hover {
-     background-color: #fff;
-     color: var(--primary);
      transform: translateY(-2px);
    }
 
